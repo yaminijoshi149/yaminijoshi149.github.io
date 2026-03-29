@@ -1,0 +1,32 @@
+/* Navbar.css */
+.nav-body {
+    background-color: #2e3047 !important;
+    color: #F7E7DC !important;
+    position: sticky !important;
+    opacity: 0.5;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    padding-bottom: 0 !important;
+}
+
+.nav-link {
+    color: #F7E7DC !important;
+    padding-right: 7% !important;
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.nav-button {
+    padding: 0 !important;
+}
+
+.nav-link:hover {
+    color: #DA7297 !important;
+    font-weight: bold;
+}
+
+.toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
