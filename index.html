@@ -4,18 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- TODO: Update page title with your name -->
-    <title>Your Name | Portfolio</title>
+    <title>Yamini Joshi| Portfolio</title>
     <meta
       name="description"
       content="One-page portfolio for a student or early-career software developer."
     />
-    <!-- TODO: Update Open Graph tags when final content is ready -->
-    <meta property="og:title" content="Your Name | Portfolio" />
+    <meta property="og:title" content="Yamini Joshi | Portfolio" />
     <meta
       property="og:description"
-      content="Student / early-career tech portfolio."
+      content="One-page portfolio for a student or early-career software developer."
     />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yaminijoshi149.github.io/" />
+    <meta
+      property="og:image"
+      content="https://yaminijoshi149.github.io/assets/img/profile.jpg"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -24,7 +28,7 @@
     <header class="site-header">
       <nav class="navbar container" id="navbar" aria-label="Primary navigation">
         <!-- TODO: Replace with your name or initials -->
-        <a href="#hero" class="brand">Your Name</a>
+        <a href="#hero" class="brand">Yamini Joshi</a>
         <button
           class="menu-toggle"
           id="menu-toggle"
@@ -39,7 +43,6 @@
         </button>
         <ul class="nav-links" id="nav-links">
           <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#education">Education</a></li>
@@ -52,32 +55,33 @@
       <!-- 2. hero -->
       <section id="hero" class="section hero">
         <div class="container">
-          <!-- TODO: Replace name, title, intro, and CTA links -->
-          <p class="eyebrow">Student Developer</p>
-          <h1>Your Name</h1>
-          <p class="hero-title">Aspiring Software Engineer</p>
-          <p class="lead">
-            Short intro about who you are, what you build, and what opportunities you are
-            looking for.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects">View Projects</a>
-            <!-- TODO: Add your resume PDF at assets/docs/resume.pdf -->
-            <a class="btn btn-secondary" href="assets/docs/resume.pdf">Download Resume</a>
-          </div>
-        </div>
-      </section>
+          <div class="hero-panel">
+            <div class="hero-resume-corner">
+              <!-- TODO: Add your resume PDF at assets/docs/resume.pdf -->
+              <a class="btn btn-corner" href="assets/docs/resume.pdf">Resume / CV</a>
+            </div>
 
-      <!-- 3. about -->
-      <section id="about" class="section">
-        <div class="container">
-          <h2>About</h2>
-          <!-- TODO: Replace with your real background -->
-          <p>
-            I am a student / early-career developer who enjoys building clean, practical
-            software. I like turning ideas into useful products and continuously improving
-            my technical skills.
-          </p>
+            <div class="hero-grid">
+              <div class="hero-copy">
+                <!-- TODO: Replace name, title, and intro/about text -->
+                <p class="eyebrow">Student Developer</p>
+                <h1>Yamini Joshi</h1>
+                <p class="hero-title">Aspiring Software Engineer</p>
+                <p class="lead">
+                  Short intro/about paragraph about who you are, what you build, and what
+                  opportunities you are looking for.
+                </p>
+                <div class="hero-actions">
+                  <a class="btn btn-primary" href="#projects">View Projects</a>
+                </div>
+              </div>
+
+              <div class="hero-image-wrap">
+                <!-- TODO: Replace assets/img/profile.jpg with your own portrait image -->
+                <img src="assets/img/profile.jpg" alt="Portrait placeholder" class="hero-image" />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -190,21 +194,114 @@
       <!-- 7. contact -->
       <section id="contact" class="section">
         <div class="container">
-          <h2>Contact</h2>
-          <!-- TODO: Replace email and profile links -->
-          <p>
-            Feel free to reach out for internship and early-career opportunities.
-          </p>
-          <ul class="contact-list">
-            <li>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></li>
-            <li>
-              LinkedIn:
-              <a href="https://www.linkedin.com/in/your-linkedin-handle/">linkedin.com/in/your-linkedin-handle</a>
-            </li>
-            <li>
-              GitHub: <a href="https://github.com/your-github-username">github.com/your-github-username</a>
-            </li>
-          </ul>
+          <h2>Contact Me</h2>
+          <div class="contact-layout">
+            <div class="contact-links-panel">
+              <h3>Connect with me on</h3>
+              <div class="contact-icon-row">
+                <a
+                  class="contact-icon-link"
+                  href="https://github.com/yaminijoshi149"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Visit Yamini Joshi on GitHub"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.866-.013-1.699-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.071 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.349-1.088.635-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.269 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.55 9.55 0 0 1 2.504.337c1.909-1.295 2.748-1.026 2.748-1.026.546 1.378.203 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.31.678.921.678 1.857 0 1.34-.013 2.42-.013 2.75 0 .269.18.58.688.481A10.02 10.02 0 0 0 22 12.017C22 6.484 17.523 2 12 2Z"
+                    />
+                  </svg>
+                  <span>GitHub</span>
+                </a>
+                <a
+                  class="contact-icon-link"
+                  href="https://www.linkedin.com/in/yaminigjoshi/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Visit Yamini Joshi on LinkedIn"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M6.94 8.5A1.56 1.56 0 1 1 6.94 5.38 1.56 1.56 0 0 1 6.94 8.5ZM5.5 9.75h2.88V19H5.5V9.75Zm4.69 0h2.76v1.26h.04c.38-.73 1.33-1.5 2.74-1.5 2.93 0 3.47 1.93 3.47 4.44V19h-2.88v-4.48c0-1.07-.02-2.44-1.49-2.44-1.49 0-1.72 1.16-1.72 2.36V19h-2.92V9.75Z"
+                    />
+                  </svg>
+                  <span>LinkedIn</span>
+                </a>
+                <a
+                  class="contact-icon-link"
+                  href="mailto:yaminijoshi149@gmail.com"
+                  aria-label="Email Yamini Joshi"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M3 6.75A1.75 1.75 0 0 1 4.75 5h14.5A1.75 1.75 0 0 1 21 6.75v10.5A1.75 1.75 0 0 1 19.25 19H4.75A1.75 1.75 0 0 1 3 17.25V6.75Zm1.75-.25a.25.25 0 0 0-.25.25v.2l7.5 5.29 7.5-5.29v-.2a.25.25 0 0 0-.25-.25H4.75Zm14.75 2.29-6.95 4.9a1 1 0 0 1-1.1 0L4.5 8.79v8.46c0 .138.112.25.25.25h14.5a.25.25 0 0 0 .25-.25V8.79Z"
+                    />
+                  </svg>
+                  <span>Email</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-form-panel">
+              <h3>Send a message</h3>
+              <form
+                class="contact-form"
+                id="contact-form"
+                action="https://formspree.io/f/mkopzabe"
+                method="POST"
+                novalidate
+              >
+                <div class="contact-form-row">
+                  <div class="contact-field">
+                    <label for="contact-name">Name</label>
+                    <input
+                      id="contact-name"
+                      name="name"
+                      type="text"
+                      autocomplete="name"
+                      required
+                    />
+                  </div>
+
+                  <div class="contact-field">
+                    <label for="contact-email">Email</label>
+                    <input
+                      id="contact-email"
+                      name="email"
+                      type="email"
+                      autocomplete="email"
+                      inputmode="email"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="contact-field">
+                  <label for="contact-subject">Subject</label>
+                  <input id="contact-subject" name="subject" type="text" required />
+                </div>
+
+                <div class="contact-field">
+                  <label for="contact-message">Message</label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    rows="4"
+                    required
+                  ></textarea>
+                </div>
+
+                <div
+                  class="form-status"
+                  id="form-status"
+                  role="status"
+                  aria-live="polite"
+                ></div>
+
+                <button class="btn btn-primary" type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
         </div>
       </section>
     </main>
@@ -213,7 +310,7 @@
     <footer id="footer" class="site-footer">
       <div class="container footer-inner">
         <!-- TODO: Replace with your name -->
-        <p>&copy; <span id="year"></span> Your Name</p>
+        <p>&copy; <span id="year"></span> Yamini Joshi</p>
         <a href="#hero">Back to top</a>
       </div>
     </footer>
