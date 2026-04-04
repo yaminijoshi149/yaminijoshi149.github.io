@@ -4,9 +4,132 @@ const navAnchors = document.querySelectorAll(".nav-links a");
 const year = document.querySelector("#year");
 const contactForm = document.querySelector("#contact-form");
 const formStatus = document.querySelector("#form-status");
+const skillsShowcase = document.querySelector("#skills-showcase");
+
+const skillsData = [
+  {
+    layout: "compact",
+    title: "Programming Languages",
+    skills: [
+      { name: "Python", iconSlug: "python", fallback: "Py" },
+      { name: "SQL", iconSlug: "sqlite", fallback: "SQL" },
+      { name: "JavaScript", iconSlug: "javascript", fallback: "JS" },
+      { name: "TypeScript", iconSlug: "typescript", fallback: "TS" },
+      { name: "Bash/Shell Scripting", iconSlug: "gnubash", fallback: "SH" },
+      { name: "R", iconSlug: "r", fallback: "R" },
+    ],
+  },
+  {
+    layout: "expanded",
+    title: "Data",
+    skills: [
+      { name: "Relational Databases (RDBMS)", fallback: "DB" },
+      { name: "MySQL", iconSlug: "mysql", fallback: "MY" },
+      { name: "MongoDB", iconSlug: "mongodb", fallback: "MG" },
+      { name: "Pinecone", iconSlug: "pinecone", fallback: "PC" },
+      { name: "Spark", iconSlug: "apachespark", fallback: "SP" },
+      { name: "Hive", iconSlug: "apachehive", fallback: "HV" },
+      { name: "Kafka", iconSlug: "apachekafka", fallback: "KF" },
+      { name: "Pandas", iconSlug: "pandas", fallback: "PD" },
+      { name: "NumPy", iconSlug: "numpy", fallback: "NP" },
+    ],
+  },
+  {
+    layout: "standard",
+    title: "ML & AI",
+    skills: [
+      { name: "Scikit-learn", iconSlug: "scikitlearn", fallback: "SK" },
+      { name: "PyTorch", iconSlug: "pytorch", fallback: "PT" },
+      { name: "Keras", iconSlug: "keras", fallback: "KE" },
+      { name: "Hugging Face", iconSlug: "huggingface", fallback: "HF" },
+      { name: "LangChain", iconSlug: "langchain", fallback: "LC" },
+      { name: "OpenCV", iconSlug: "opencv", fallback: "CV" },
+      { name: "Jupyter", iconSlug: "jupyter", fallback: "JP" },
+    ],
+  },
+  {
+    layout: "compact",
+    title: "Cloud & DevOps",
+    skills: [
+      { name: "AWS", iconSlug: "amazonwebservices", fallback: "AWS" },
+      { name: "GCP", iconSlug: "googlecloud", fallback: "GCP" },
+      { name: "Jenkins (CI/CD)", iconSlug: "jenkins", fallback: "JK" },
+      { name: "Git/GitHub", iconSlugs: ["git", "github"], fallback: "GH" },
+      { name: "SLURM (HPC)", fallback: "HPC" },
+    ],
+  },
+];
 
 if (year) {
   year.textContent = String(new Date().getFullYear());
+}
+
+function getSkillIconUrl(iconSlug) {
+  return `https://cdn.simpleicons.org/${iconSlug}`;
+}
+
+function renderSkillIcon(skill) {
+  if (skill.iconSlugs?.length) {
+    return `
+      <span class="skill-icon skill-icon-stack" aria-hidden="true" data-fallback="${skill.fallback || ""}">
+        ${skill.iconSlugs
+          .map(
+            (iconSlug) => `
+              <img
+                class="skill-logo"
+                src="${getSkillIconUrl(iconSlug)}"
+                alt=""
+                loading="lazy"
+                decoding="async"
+                onerror="this.remove()"
+              />
+            `
+          )
+          .join("")}
+      </span>
+    `;
+  }
+
+  if (skill.iconSlug) {
+    return `
+      <span class="skill-icon" aria-hidden="true" data-fallback="${skill.fallback || ""}">
+        <img
+          class="skill-logo"
+          src="${getSkillIconUrl(skill.iconSlug)}"
+          alt=""
+          loading="lazy"
+          decoding="async"
+          onerror="this.parentElement.textContent=this.parentElement.dataset.fallback||'';this.remove()"
+        />
+      </span>
+    `;
+  }
+
+  return `<span class="skill-icon skill-icon-fallback" aria-hidden="true">${skill.fallback}</span>`;
+}
+
+if (skillsShowcase) {
+  skillsShowcase.innerHTML = skillsData
+    .map(
+      (group) => `
+        <article class="skills-group skills-group-${group.layout || "standard"}">
+          <h3>${group.title}</h3>
+          <div class="skills-group-list" role="list" aria-label="${group.title}">
+            ${group.skills
+              .map(
+                (skill) => `
+                  <div class="skill-tile" role="listitem">
+                    ${renderSkillIcon(skill)}
+                    <span class="skill-name">${skill.name}</span>
+                  </div>
+                `
+              )
+              .join("")}
+          </div>
+        </article>
+      `
+    )
+    .join("");
 }
 
 function setFormStatus(message, type) {

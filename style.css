@@ -285,21 +285,122 @@ h1 {
 }
 
 /* 4. Skills */
-.skills-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem;
+.skills-showcase {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-areas:
+    "languages data"
+    "ml cloud";
+  column-gap: 2rem;
+  row-gap: 2rem;
+  align-items: start;
 }
 
-.chip {
-  display: inline-block;
-  border: 1px solid rgba(191, 206, 232, 0.3);
-  background: rgba(167, 184, 212, 0.16);
-  color: #cfdbef;
-  font-weight: 600;
+.skills-group {
+  min-width: 0;
+}
+
+.skills-group:nth-child(1) {
+  grid-area: languages;
+}
+
+.skills-group:nth-child(2) {
+  grid-area: data;
+}
+
+.skills-group:nth-child(3) {
+  grid-area: ml;
+}
+
+.skills-group:nth-child(4) {
+  grid-area: cloud;
+}
+
+.skills-group h3 {
+  margin-bottom: 0.95rem;
+  color: #e7eef9;
+  font-size: 1.02rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+
+.skills-group-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+  align-content: start;
+}
+
+.skills-group-expanded .skills-group-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.skill-tile {
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+  gap: 0.68rem;
+  padding: 0.72rem 0.78rem;
+  border-radius: 13px;
+  border: 1px solid rgba(184, 200, 224, 0.12);
+  background: rgba(164, 183, 214, 0.05);
+  color: #dce6f7;
+  box-shadow:
+    0 8px 18px rgba(5, 10, 28, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.015);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.skill-tile:hover,
+.skill-tile:focus-within {
+  transform: translateY(-1px);
+  border-color: rgba(214, 227, 247, 0.2);
+  box-shadow: 0 12px 22px rgba(5, 10, 28, 0.11);
+}
+
+.skill-icon {
+  width: 2.15rem;
+  height: 2.15rem;
+  border-radius: 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  background: rgba(154, 175, 209, 0.09);
+  border: 1px solid rgba(197, 210, 233, 0.12);
+  color: #f2f6ff;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+
+.skill-icon-stack {
+  gap: 0.18rem;
+}
+
+.skill-logo {
+  width: 1.08rem;
+  height: 1.08rem;
+  object-fit: contain;
+  filter: brightness(1.08) saturate(1.02);
+}
+
+.skill-icon-fallback {
+  padding-inline: 0.28rem;
+}
+
+.skill-name {
   font-size: 0.86rem;
-  border-radius: 999px;
-  padding: 0.38rem 0.72rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #d8e3f6;
 }
 
 /* 5. Projects */
@@ -621,6 +722,16 @@ h1 {
     grid-template-columns: 1fr;
   }
 
+  .skills-showcase {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "languages"
+      "data"
+      "ml"
+      "cloud";
+    gap: 1.5rem;
+  }
+
   .contact-layout {
     grid-template-columns: 1fr;
     gap: 1rem;
@@ -676,6 +787,14 @@ h1 {
   .hero-panel {
     border-radius: 18px;
     padding: 1rem;
+  }
+
+  .skills-group-list {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-group-expanded .skills-group-list {
+    grid-template-columns: 1fr;
   }
 
   .hero-resume-corner {
