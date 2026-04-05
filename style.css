@@ -71,6 +71,15 @@ a {
   scroll-margin-top: 4.8rem;
 }
 
+#skills {
+  padding-top: 3.2rem;
+  padding-bottom: 0.3rem;
+}
+
+#skills h2 {
+  margin-bottom: 0.8rem;
+}
+
 :focus-visible {
   outline: 3px solid #9ab0d6;
   outline-offset: 2px;
@@ -289,15 +298,18 @@ h1 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-template-areas:
-    "languages data"
-    "ml cloud";
-  column-gap: 2rem;
-  row-gap: 2rem;
+    "languages cloud"
+    "data ml";
+  column-gap: 1.35rem;
+  row-gap: 1.15rem;
   align-items: start;
 }
 
 .skills-group {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
 }
 
 .skills-group:nth-child(1) {
@@ -305,21 +317,21 @@ h1 {
 }
 
 .skills-group:nth-child(2) {
-  grid-area: data;
-}
-
-.skills-group:nth-child(3) {
-  grid-area: ml;
-}
-
-.skills-group:nth-child(4) {
   grid-area: cloud;
 }
 
+.skills-group:nth-child(3) {
+  grid-area: data;
+}
+
+.skills-group:nth-child(4) {
+  grid-area: ml;
+}
+
 .skills-group h3 {
-  margin-bottom: 0.95rem;
+  margin-bottom: 0;
   color: #e7eef9;
-  font-size: 1.02rem;
+  font-size: 0.98rem;
   font-weight: 700;
   letter-spacing: 0.01em;
   text-align: left;
@@ -327,25 +339,24 @@ h1 {
 
 .skills-group-list {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.7rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.58rem;
   align-content: start;
 }
 
-.skills-group-expanded .skills-group-list {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
 .skill-tile {
-  min-height: 62px;
+  min-height: 106px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.68rem;
-  padding: 0.72rem 0.78rem;
-  border-radius: 13px;
+  justify-content: flex-start;
+  gap: 0.55rem;
+  padding: 0.72rem 0.68rem 0.75rem;
+  border-radius: 14px;
   border: 1px solid rgba(184, 200, 224, 0.12);
   background: rgba(164, 183, 214, 0.05);
   color: #dce6f7;
+  text-align: center;
   box-shadow:
     0 8px 18px rgba(5, 10, 28, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.015);
@@ -363,17 +374,21 @@ h1 {
 }
 
 .skill-icon {
-  width: 2.15rem;
-  height: 2.15rem;
-  border-radius: 11px;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.45rem;
+  border-radius: 12px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  background: rgba(154, 175, 209, 0.09);
-  border: 1px solid rgba(197, 210, 233, 0.12);
+  background: #ffffff;
+  border: 1px solid rgba(216, 225, 238, 0.92);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 10px 20px rgba(4, 10, 28, 0.12);
   color: #f2f6ff;
-  font-size: 0.62rem;
+  font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   line-height: 1;
@@ -381,15 +396,24 @@ h1 {
   overflow: hidden;
 }
 
-.skill-icon-stack {
-  gap: 0.18rem;
+.skill-icon-plate-light {
+  background: #ffffff;
+  border-color: rgba(216, 225, 238, 0.92);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 10px 20px rgba(4, 10, 28, 0.12);
 }
 
 .skill-logo {
-  width: 1.08rem;
-  height: 1.08rem;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
+  object-position: center;
   filter: brightness(1.08) saturate(1.02);
+}
+
+.skill-logo-custom {
+  filter: none;
 }
 
 .skill-icon-fallback {
@@ -397,9 +421,11 @@ h1 {
 }
 
 .skill-name {
-  font-size: 0.86rem;
-  font-weight: 600;
-  line-height: 1.35;
+  width: 100%;
+  display: block;
+  font-size: 0.84rem;
+  font-weight: 700;
+  line-height: 1.28;
   color: #d8e3f6;
 }
 
@@ -702,6 +728,15 @@ h1 {
 }
 
 @media (max-width: 900px) {
+  #skills {
+    padding-top: 3.6rem;
+    padding-bottom: 0.5rem;
+  }
+
+  #skills h2 {
+    margin-bottom: 1rem;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 1.1rem;
@@ -730,6 +765,37 @@ h1 {
       "ml"
       "cloud";
     gap: 1.5rem;
+  }
+
+  .skills-group {
+    gap: 0.85rem;
+  }
+
+  .skills-group h3 {
+    font-size: 1.02rem;
+  }
+
+  .skills-group-list {
+    gap: 0.7rem;
+  }
+
+  .skill-tile {
+    min-height: 132px;
+    gap: 0.8rem;
+    padding: 1rem 0.9rem 0.95rem;
+    border-radius: 16px;
+  }
+
+  .skill-icon {
+    width: 4.15rem;
+    height: 4.15rem;
+    padding: 0.7rem;
+    border-radius: 15px;
+  }
+
+  .skill-name {
+    font-size: 0.93rem;
+    line-height: 1.35;
   }
 
   .contact-layout {
@@ -790,11 +856,7 @@ h1 {
   }
 
   .skills-group-list {
-    grid-template-columns: 1fr;
-  }
-
-  .skills-group-expanded .skills-group-list {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .hero-resume-corner {
@@ -831,6 +893,10 @@ h1 {
 }
 
 @media (max-width: 520px) {
+  .skills-group-list {
+    grid-template-columns: 1fr;
+  }
+
   .contact-icon-link {
     padding: 0.7rem 0.8rem;
   }

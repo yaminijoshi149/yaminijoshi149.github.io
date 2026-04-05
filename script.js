@@ -6,9 +6,41 @@ const contactForm = document.querySelector("#contact-form");
 const formStatus = document.querySelector("#form-status");
 const skillsShowcase = document.querySelector("#skills-showcase");
 
+const customSkillIcons = {
+  Pinecone: {
+    type: "image",
+    src: "assets/img/skills/pinecone.png",
+    plate: "light",
+  },
+  AWS: {
+    type: "image",
+    src: "assets/img/skills/aws.png",
+    plate: "light",
+  },
+  GCP: {
+    type: "image",
+    src: "assets/img/skills/gcp.png",
+    plate: "light",
+  },
+  "SLURM (HPC)": {
+    type: "image",
+    src: "assets/img/skills/slurm-hpc.png",
+    plate: "light",
+  },
+  GitHub: {
+    plate: "light",
+  },
+};
+
+const skillsDisplayOrder = [
+  "Programming Languages",
+  "Cloud & DevOps",
+  "Data",
+  "ML & AI",
+];
+
 const skillsData = [
   {
-    layout: "compact",
     title: "Programming Languages",
     skills: [
       { name: "Python", iconSlug: "python", fallback: "Py" },
@@ -20,13 +52,11 @@ const skillsData = [
     ],
   },
   {
-    layout: "expanded",
     title: "Data",
     skills: [
-      { name: "Relational Databases (RDBMS)", fallback: "DB" },
       { name: "MySQL", iconSlug: "mysql", fallback: "MY" },
       { name: "MongoDB", iconSlug: "mongodb", fallback: "MG" },
-      { name: "Pinecone", iconSlug: "pinecone", fallback: "PC" },
+      { name: "Pinecone", fallback: "PC" },
       { name: "Spark", iconSlug: "apachespark", fallback: "SP" },
       { name: "Hive", iconSlug: "apachehive", fallback: "HV" },
       { name: "Kafka", iconSlug: "apachekafka", fallback: "KF" },
@@ -35,7 +65,6 @@ const skillsData = [
     ],
   },
   {
-    layout: "standard",
     title: "ML & AI",
     skills: [
       { name: "Scikit-learn", iconSlug: "scikitlearn", fallback: "SK" },
@@ -48,13 +77,13 @@ const skillsData = [
     ],
   },
   {
-    layout: "compact",
     title: "Cloud & DevOps",
     skills: [
-      { name: "AWS", iconSlug: "amazonwebservices", fallback: "AWS" },
-      { name: "GCP", iconSlug: "googlecloud", fallback: "GCP" },
+      { name: "AWS", fallback: "AWS" },
+      { name: "GCP", fallback: "GCP" },
       { name: "Jenkins (CI/CD)", iconSlug: "jenkins", fallback: "JK" },
-      { name: "Git/GitHub", iconSlugs: ["git", "github"], fallback: "GH" },
+      { name: "Git", iconSlug: "git", fallback: "Git" },
+      { name: "GitHub", iconSlug: "github", fallback: "GH" },
       { name: "SLURM (HPC)", fallback: "HPC" },
     ],
   },
@@ -69,30 +98,31 @@ function getSkillIconUrl(iconSlug) {
 }
 
 function renderSkillIcon(skill) {
-  if (skill.iconSlugs?.length) {
+  const customIcon = customSkillIcons[skill.name];
+  const iconClasses = ["skill-icon"];
+  const iconPlate = skill.plate || customIcon?.plate;
+
+  if (iconPlate === "light") {
+    iconClasses.push("skill-icon-plate-light");
+  }
+
+  if (customIcon?.type === "image" && customIcon.src) {
     return `
-      <span class="skill-icon skill-icon-stack" aria-hidden="true" data-fallback="${skill.fallback || ""}">
-        ${skill.iconSlugs
-          .map(
-            (iconSlug) => `
-              <img
-                class="skill-logo"
-                src="${getSkillIconUrl(iconSlug)}"
-                alt=""
-                loading="lazy"
-                decoding="async"
-                onerror="this.remove()"
-              />
-            `
-          )
-          .join("")}
+      <span class="${iconClasses.join(" ")}" aria-hidden="true" data-fallback="${skill.fallback || ""}">
+        <img
+          class="skill-logo skill-logo-custom"
+          src="${customIcon.src}"
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
       </span>
     `;
   }
 
   if (skill.iconSlug) {
     return `
-      <span class="skill-icon" aria-hidden="true" data-fallback="${skill.fallback || ""}">
+      <span class="${iconClasses.join(" ")}" aria-hidden="true" data-fallback="${skill.fallback || ""}">
         <img
           class="skill-logo"
           src="${getSkillIconUrl(skill.iconSlug)}"
@@ -105,14 +135,18 @@ function renderSkillIcon(skill) {
     `;
   }
 
-  return `<span class="skill-icon skill-icon-fallback" aria-hidden="true">${skill.fallback}</span>`;
+  return `<span class="${iconClasses.join(" ")} skill-icon-fallback" aria-hidden="true">${skill.fallback}</span>`;
 }
 
 if (skillsShowcase) {
-  skillsShowcase.innerHTML = skillsData
+  const orderedSkillsData = skillsDisplayOrder
+    .map((title) => skillsData.find((group) => group.title === title))
+    .filter(Boolean);
+
+  skillsShowcase.innerHTML = orderedSkillsData
     .map(
       (group) => `
-        <article class="skills-group skills-group-${group.layout || "standard"}">
+        <article class="skills-group">
           <h3>${group.title}</h3>
           <div class="skills-group-list" role="list" aria-label="${group.title}">
             ${group.skills
