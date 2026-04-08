@@ -7,14 +7,14 @@ const formStatus = document.querySelector("#form-status");
 const skillsShowcase = document.querySelector("#skills-showcase");
 
 const customSkillIcons = {
-  Pinecone: {
-    type: "image",
-    src: "assets/img/skills/pinecone.png",
-    plate: "light",
-  },
   AWS: {
     type: "image",
     src: "assets/img/skills/aws.png",
+    plate: "light",
+  },
+  CSS: {
+    type: "image",
+    src: "assets/img/skills/css.png",
     plate: "light",
   },
   GCP: {
@@ -22,69 +22,83 @@ const customSkillIcons = {
     src: "assets/img/skills/gcp.png",
     plate: "light",
   },
-  "SLURM (HPC)": {
+  Pinecone: {
     type: "image",
-    src: "assets/img/skills/slurm-hpc.png",
+    src: "assets/img/skills/pinecone.png",
     plate: "light",
   },
-  GitHub: {
+  SQL: {
+    type: "image",
+    src: "assets/img/skills/sql-database.svg",
     plate: "light",
   },
 };
 
 const skillsDisplayOrder = [
-  "Programming Languages",
-  "Cloud & DevOps",
-  "Data",
-  "ML & AI",
+  "Languages",
+  "AI & ML",
+  "Data & Databases",
+  "Web / App Development",
+  "Cloud & Developer Tools",
 ];
 
 const skillsData = [
   {
-    title: "Programming Languages",
+    title: "Languages",
     skills: [
       { name: "Python", iconSlug: "python", fallback: "Py" },
-      { name: "SQL", iconSlug: "sqlite", fallback: "SQL" },
+      { name: "SQL", fallback: "SQL" },
       { name: "JavaScript", iconSlug: "javascript", fallback: "JS" },
       { name: "TypeScript", iconSlug: "typescript", fallback: "TS" },
-      { name: "Bash/Shell Scripting", iconSlug: "gnubash", fallback: "SH" },
-      { name: "R", iconSlug: "r", fallback: "R" },
+      { name: "Bash / Shell Scripting", iconSlug: "gnubash", fallback: "SH" },
     ],
   },
   {
-    title: "Data",
+    title: "Data & Databases",
     skills: [
       { name: "MySQL", iconSlug: "mysql", fallback: "MY" },
       { name: "MongoDB", iconSlug: "mongodb", fallback: "MG" },
-      { name: "Pinecone", fallback: "PC" },
       { name: "Spark", iconSlug: "apachespark", fallback: "SP" },
       { name: "Hive", iconSlug: "apachehive", fallback: "HV" },
       { name: "Kafka", iconSlug: "apachekafka", fallback: "KF" },
       { name: "Pandas", iconSlug: "pandas", fallback: "PD" },
       { name: "NumPy", iconSlug: "numpy", fallback: "NP" },
+      { name: "Pinecone", iconSlug: "pinecone", fallback: "PC" },
+      { name: "Jupyter", iconSlug: "jupyter", fallback: "JP" },
     ],
   },
   {
-    title: "ML & AI",
+    title: "AI & ML",
     skills: [
       { name: "Scikit-learn", iconSlug: "scikitlearn", fallback: "SK" },
       { name: "PyTorch", iconSlug: "pytorch", fallback: "PT" },
       { name: "Keras", iconSlug: "keras", fallback: "KE" },
       { name: "Hugging Face", iconSlug: "huggingface", fallback: "HF" },
       { name: "LangChain", iconSlug: "langchain", fallback: "LC" },
-      { name: "OpenCV", iconSlug: "opencv", fallback: "CV" },
-      { name: "Jupyter", iconSlug: "jupyter", fallback: "JP" },
     ],
   },
   {
-    title: "Cloud & DevOps",
+    title: "Web / App Development",
     skills: [
-      { name: "AWS", fallback: "AWS" },
-      { name: "GCP", fallback: "GCP" },
-      { name: "Jenkins (CI/CD)", iconSlug: "jenkins", fallback: "JK" },
+      { name: "HTML", iconSlug: "html5", fallback: "HTML" },
+      { name: "CSS", iconSlug: "css3", fallback: "CSS" },
+      { name: "Bootstrap", iconSlug: "bootstrap", fallback: "BS" },
+      { name: "Tailwind CSS", iconSlug: "tailwindcss", fallback: "TW" },
+      { name: "Django", iconSlug: "django", fallback: "DJ" },
+      { name: "Flask", iconSlug: "flask", fallback: "FL" },
+      { name: "Angular JS", iconSlug: "angular", fallback: "NG" },
+      { name: "React JS", iconSlug: "react", fallback: "React" },
+      { name: "Node JS", iconSlug: "nodedotjs", fallback: "Node" },
+    ],
+  },
+  {
+    title: "Cloud & Developer Tools",
+    skills: [
+      { name: "AWS", iconSlug: "amazonwebservices", fallback: "AWS" },
+      { name: "GCP", iconSlug: "googlecloud", fallback: "GCP" },
       { name: "Git", iconSlug: "git", fallback: "Git" },
       { name: "GitHub", iconSlug: "github", fallback: "GH" },
-      { name: "SLURM (HPC)", fallback: "HPC" },
+      { name: "Jenkins (CI/CD)", iconSlug: "jenkins", fallback: "JK" },
     ],
   },
 ];
@@ -115,6 +129,7 @@ function renderSkillIcon(skill) {
           alt=""
           loading="lazy"
           decoding="async"
+          onerror="this.parentElement.textContent=this.parentElement.dataset.fallback||'';this.remove()"
         />
       </span>
     `;

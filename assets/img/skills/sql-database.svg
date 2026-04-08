@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-hidden="true">
+  <defs>
+    <linearGradient id="db-top" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#2c4f86" />
+      <stop offset="100%" stop-color="#16325d" />
+    </linearGradient>
+    <linearGradient id="db-side" x1="0%" x2="0%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#21406f" />
+      <stop offset="100%" stop-color="#112649" />
+    </linearGradient>
+  </defs>
+  <ellipse cx="32" cy="16" rx="18" ry="8" fill="url(#db-top)" />
+  <path d="M14 16v11c0 4.42 8.06 8 18 8s18-3.58 18-8V16c0 4.42-8.06 8-18 8s-18-3.58-18-8Z" fill="url(#db-side)" />
+  <path d="M14 27v11c0 4.42 8.06 8 18 8s18-3.58 18-8V27c0 4.42-8.06 8-18 8s-18-3.58-18-8Z" fill="url(#db-side)" opacity=".95" />
+  <path d="M14 38v10c0 4.42 8.06 8 18 8s18-3.58 18-8V38c0 4.42-8.06 8-18 8s-18-3.58-18-8Z" fill="url(#db-side)" opacity=".9" />
+  <ellipse cx="32" cy="27" rx="18" ry="8" fill="none" stroke="#8fb1e3" stroke-width="2" opacity=".85" />
+  <ellipse cx="32" cy="38" rx="18" ry="8" fill="none" stroke="#89a9db" stroke-width="2" opacity=".72" />
+  <ellipse cx="32" cy="48" rx="18" ry="8" fill="none" stroke="#7c9bcf" stroke-width="2" opacity=".6" />
+</svg>

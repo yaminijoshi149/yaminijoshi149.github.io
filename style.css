@@ -298,10 +298,11 @@ h1 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-template-areas:
-    "languages cloud"
-    "data ml";
-  column-gap: 1.35rem;
-  row-gap: 1.15rem;
+    "languages aiml"
+    "data web"
+    "cloud cloud";
+  column-gap: 0.95rem;
+  row-gap: 0.9rem;
   align-items: start;
 }
 
@@ -309,7 +310,7 @@ h1 {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 0.5rem;
 }
 
 .skills-group:nth-child(1) {
@@ -317,7 +318,7 @@ h1 {
 }
 
 .skills-group:nth-child(2) {
-  grid-area: cloud;
+  grid-area: aiml;
 }
 
 .skills-group:nth-child(3) {
@@ -325,7 +326,13 @@ h1 {
 }
 
 .skills-group:nth-child(4) {
-  grid-area: ml;
+  grid-area: web;
+}
+
+.skills-group:nth-child(5) {
+  grid-area: cloud;
+  justify-self: stretch;
+  width: 100%;
 }
 
 .skills-group h3 {
@@ -333,51 +340,46 @@ h1 {
   color: #e7eef9;
   font-size: 0.98rem;
   font-weight: 700;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
   text-align: left;
+  text-transform: uppercase;
 }
 
 .skills-group-list {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.58rem;
-  align-content: start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.35rem 0.45rem;
 }
 
 .skill-tile {
-  min-height: 106px;
+  min-height: 78px;
+  width: clamp(4.85rem, 7.2vw, 5.8rem);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 0.55rem;
-  padding: 0.72rem 0.68rem 0.75rem;
-  border-radius: 14px;
-  border: 1px solid rgba(184, 200, 224, 0.12);
-  background: rgba(164, 183, 214, 0.05);
+  gap: 0.34rem;
+  padding: 0.28rem 0.18rem 0.24rem;
   color: #dce6f7;
   text-align: center;
-  box-shadow:
-    0 8px 18px rgba(5, 10, 28, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.015);
   transition:
     transform 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+    opacity 0.2s ease;
 }
 
 .skill-tile:hover,
 .skill-tile:focus-within {
   transform: translateY(-1px);
-  border-color: rgba(214, 227, 247, 0.2);
-  box-shadow: 0 12px 22px rgba(5, 10, 28, 0.11);
+  opacity: 0.98;
 }
 
 .skill-icon {
-  width: 3rem;
-  height: 3rem;
-  padding: 0.45rem;
-  border-radius: 12px;
+  width: 2.55rem;
+  height: 2.55rem;
+  padding: 0.34rem;
+  border-radius: 10px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -388,7 +390,7 @@ h1 {
     inset 0 1px 0 rgba(255, 255, 255, 0.9),
     0 10px 20px rgba(4, 10, 28, 0.12);
   color: #f2f6ff;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   line-height: 1;
@@ -423,9 +425,9 @@ h1 {
 .skill-name {
   width: 100%;
   display: block;
-  font-size: 0.84rem;
+  font-size: 0.76rem;
   font-weight: 700;
-  line-height: 1.28;
+  line-height: 1.18;
   color: #d8e3f6;
 }
 
@@ -761,41 +763,47 @@ h1 {
     grid-template-columns: 1fr;
     grid-template-areas:
       "languages"
+      "aiml"
       "data"
-      "ml"
+      "web"
       "cloud";
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   .skills-group {
-    gap: 0.85rem;
+    gap: 0.58rem;
+  }
+
+  .skills-group:nth-child(5) {
+    justify-self: stretch;
+    width: 100%;
   }
 
   .skills-group h3 {
-    font-size: 1.02rem;
+    font-size: 0.98rem;
   }
 
   .skills-group-list {
-    gap: 0.7rem;
+    gap: 0.42rem 0.5rem;
   }
 
   .skill-tile {
-    min-height: 132px;
-    gap: 0.8rem;
-    padding: 1rem 0.9rem 0.95rem;
-    border-radius: 16px;
+    min-height: 82px;
+    width: clamp(5.2rem, 13vw, 6.15rem);
+    gap: 0.38rem;
+    padding: 0.32rem 0.22rem 0.28rem;
   }
 
   .skill-icon {
-    width: 4.15rem;
-    height: 4.15rem;
-    padding: 0.7rem;
-    border-radius: 15px;
+    width: 2.85rem;
+    height: 2.85rem;
+    padding: 0.42rem;
+    border-radius: 11px;
   }
 
   .skill-name {
-    font-size: 0.93rem;
-    line-height: 1.35;
+    font-size: 0.81rem;
+    line-height: 1.25;
   }
 
   .contact-layout {
@@ -856,7 +864,7 @@ h1 {
   }
 
   .skills-group-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.34rem 0.42rem;
   }
 
   .hero-resume-corner {
@@ -894,7 +902,24 @@ h1 {
 
 @media (max-width: 520px) {
   .skills-group-list {
-    grid-template-columns: 1fr;
+    gap: 0.3rem 0.34rem;
+  }
+
+  .skill-tile {
+    min-height: 78px;
+    width: calc(50% - 0.2rem);
+    gap: 0.32rem;
+    padding: 0.24rem 0.12rem 0.18rem;
+  }
+
+  .skill-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.34rem;
+  }
+
+  .skill-name {
+    font-size: 0.73rem;
   }
 
   .contact-icon-link {
