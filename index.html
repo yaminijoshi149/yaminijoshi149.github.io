@@ -45,7 +45,6 @@
           <li><a href="#hero">Home</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
-          <li><a href="#education">Education</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -56,23 +55,37 @@
       <section id="hero" class="section hero">
         <div class="container">
           <div class="hero-panel">
-            <div class="hero-resume-corner">
-              <!-- TODO: Add your resume PDF at assets/docs/resume.pdf -->
-              <a class="btn btn-corner" href="assets/docs/resume.pdf">Resume / CV</a>
-            </div>
-
             <div class="hero-grid">
               <div class="hero-copy">
-                <!-- TODO: Replace name, title, and intro/about text -->
-                <p class="eyebrow">Student Developer</p>
-                <h1>Yamini Joshi</h1>
-                <p class="hero-title">Aspiring Data / Software Engineer</p>
-                <p class="lead">
-                  Short intro/about paragraph about who you are, what you build, and what
-                  opportunities you are looking for.
-                </p>
+                <p class="hero-intro">Hi, I am</p>
+                <h1>Yamini Joshi.</h1>
+                <div class="lead">
+                  <p>
+                    I recently graduated with a Master’s degree in Computer Science from USC
+                    🎓. I’m a passionate data/software engineer 💻. I love working with data,
+                    building efficient systems, and turning ideas into real, impactful
+                    solutions.
+                  </p>
+                  <p>
+                    When I’m not coding, you’ll probably find me baking something new 🍰,
+                    speaking at Toastmasters 🎤, or getting lost in a good book 📚.
+                  </p>
+                  <p>
+                    I’m currently seeking full-time opportunities in data engineering and
+                    software engineering. If you think I’d be a good fit or come across
+                    something interesting, feel free to reach out 🤝!
+                  </p>
+                </div>
                 <div class="hero-actions">
                   <a class="btn btn-primary" href="#projects">View Projects</a>
+                  <a
+                    class="btn btn-primary"
+                    href="https://drive.google.com/file/d/1nxbirxtI8odcrwGx57j3BkOZ1_4e6NIr/view?usp=sharing"
+                    target="_blank"
+                    rel="noreferrer"
+                    >Resume / CV</a
+                  >
+                  <a class="btn btn-primary" href="#contact">Contact Me</a>
                 </div>
               </div>
 
@@ -97,87 +110,194 @@
       <section id="projects" class="section">
         <div class="container">
           <h2>Projects</h2>
-          <!-- TODO: Duplicate/remove cards as needed -->
           <div class="projects-grid">
-            <article class="card project-card">
-              <!-- TODO: Project title -->
-              <h3>Project Title 1</h3>
-              <!-- TODO: Project description -->
-              <p>
-                Short description of what this project does and the problem it solves.
-              </p>
-              <!-- TODO: Tech stack -->
-              <p class="stack"><strong>Tech:</strong> HTML, CSS, JavaScript</p>
-              <div class="project-links">
-                <!-- TODO: Add GitHub URL -->
+            <article class="project-card">
+              <div class="project-image-wrapper">
+                <img
+                  class="project-image"
+                  src="assets/img/projects/amd.png"
+                  alt="Macular Degeneration Grading project preview"
+                />
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Macular Degeneration Grading</h3>
+                <p class="project-description">
+                  A deep learning-based system that classifies retinal fundus images to
+                  detect and grade the severity of age-related macular degeneration.
+                </p>
                 <a
-                  href="https://github.com/your-github-username/your-project-1"
-                  aria-label="Project 1 GitHub link"
-                  >GitHub</a
+                  class="project-github"
+                  href="https://github.com/yaminijoshi149/AMD-Classifier"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Open Macular Degeneration Grading GitHub repository in a new tab"
                 >
-                <!-- TODO: Optional demo URL -->
-                <a href="https://example.com/project-1-demo" aria-label="Project 1 demo link"
-                  >Live Demo</a
-                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.866-.013-1.699-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.071 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.349-1.088.635-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.269 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.55 9.55 0 0 1 2.504.337c1.909-1.295 2.748-1.026 2.748-1.026.546 1.378.203 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.31.678.921.678 1.857 0 1.34-.013 2.42-.013 2.75 0 .269.18.58.688.481A10.02 10.02 0 0 0 22 12.017C22 6.484 17.523 2 12 2Z"
+                    />
+                  </svg>
+                  <span class="sr-only">Macular Degeneration Grading GitHub</span>
+                </a>
               </div>
             </article>
 
-            <article class="card project-card">
-              <!-- TODO: Project title -->
-              <h3>Project Title 2</h3>
-              <!-- TODO: Project description -->
-              <p>
-                Short description of what this project does and the problem it solves.
-              </p>
-              <!-- TODO: Tech stack -->
-              <p class="stack"><strong>Tech:</strong> JavaScript, API, CSS</p>
-              <div class="project-links">
-                <!-- TODO: Add GitHub URL -->
+            <article class="project-card">
+              <div class="project-image-wrapper">
+                <img
+                  class="project-image"
+                  src="assets/img/projects/scheduling.png"
+                  alt="Appointment Scheduling Chatbot project preview"
+                />
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Appointment Scheduling Chatbot</h3>
+                <p class="project-description">
+                  An AI-powered chatbot that matches patients with suitable doctors and
+                  schedules appointments using availability filtering and voice-enabled
+                  assistance.
+                </p>
                 <a
-                  href="https://github.com/your-github-username/your-project-2"
-                  aria-label="Project 2 GitHub link"
-                  >GitHub</a
+                  class="project-github"
+                  href="https://github.com/yaminijoshi149/Appointment-Scheduling"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Open Appointment Scheduling Chatbot GitHub repository in a new tab"
                 >
-                <!-- TODO: Optional demo URL -->
-                <a href="https://example.com/project-2-demo" aria-label="Project 2 demo link"
-                  >Live Demo</a
-                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.866-.013-1.699-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.071 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.349-1.088.635-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.269 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.55 9.55 0 0 1 2.504.337c1.909-1.295 2.748-1.026 2.748-1.026.546 1.378.203 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.31.678.921.678 1.857 0 1.34-.013 2.42-.013 2.75 0 .269.18.58.688.481A10.02 10.02 0 0 0 22 12.017C22 6.484 17.523 2 12 2Z"
+                    />
+                  </svg>
+                  <span class="sr-only">Appointment Scheduling Chatbot GitHub</span>
+                </a>
               </div>
             </article>
 
-            <article class="card project-card">
-              <!-- TODO: Project title -->
-              <h3>Project Title 3</h3>
-              <!-- TODO: Project description -->
-              <p>
-                Short description of what this project does and the problem it solves.
-              </p>
-              <!-- TODO: Tech stack -->
-              <p class="stack"><strong>Tech:</strong> Python, Flask, SQLite</p>
-              <div class="project-links">
-                <!-- TODO: Add GitHub URL -->
+            <article class="project-card">
+              <div class="project-image-wrapper">
+                <img
+                  class="project-image"
+                  src="assets/img/projects/fake_news.png"
+                  alt="Fake News Detection project preview"
+                />
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Fake News Detection</h3>
+                <p class="project-description">
+                  A text classification pipeline to detect fake news related to COVID-19
+                  using deep learning models.
+                </p>
                 <a
-                  href="https://github.com/your-github-username/your-project-3"
-                  aria-label="Project 3 GitHub link"
-                  >GitHub</a
+                  class="project-github"
+                  href="https://github.com/yaminijoshi149/Fake-News-Detection"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Open Fake News Detection GitHub repository in a new tab"
                 >
-                <!-- TODO: Optional demo URL -->
-                <a href="https://example.com/project-3-demo" aria-label="Project 3 demo link"
-                  >Live Demo</a
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.866-.013-1.699-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.071 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.349-1.088.635-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.269 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.55 9.55 0 0 1 2.504.337c1.909-1.295 2.748-1.026 2.748-1.026.546 1.378.203 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.31.678.921.678 1.857 0 1.34-.013 2.42-.013 2.75 0 .269.18.58.688.481A10.02 10.02 0 0 0 22 12.017C22 6.484 17.523 2 12 2Z"
+                    />
+                  </svg>
+                  <span class="sr-only">Fake News Detection GitHub</span>
+                </a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-image-wrapper">
+                <img
+                  class="project-image"
+                  src="assets/img/projects/hybrid.png"
+                  alt="Hybrid Optimization project preview"
+                />
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Hybrid Optimization</h3>
+                <p class="project-description">
+                  Hybrid optimization for CNNs using pruning and 8-bit quantization for
+                  model compression and inference acceleration.
+                </p>
+                <a
+                  class="project-github"
+                  href="https://github.com/yaminijoshi149/Hybrid-Optimization-for-DNN-Model-Compression-and-Inference-Acceleration"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Open Hybrid Optimization GitHub repository in a new tab"
                 >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.866-.013-1.699-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.071 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.349-1.088.635-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.269 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.55 9.55 0 0 1 2.504.337c1.909-1.295 2.748-1.026 2.748-1.026.546 1.378.203 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.31.678.921.678 1.857 0 1.34-.013 2.42-.013 2.75 0 .269.18.58.688.481A10.02 10.02 0 0 0 22 12.017C22 6.484 17.523 2 12 2Z"
+                    />
+                  </svg>
+                  <span class="sr-only">Hybrid Optimization GitHub</span>
+                </a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-image-wrapper">
+                <img
+                  class="project-image"
+                  src="assets/img/projects/student.png"
+                  alt="Student Performance Prediction project preview"
+                />
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Student Performance Prediction</h3>
+                <p class="project-description">
+                  Learning analytics project using machine learning to predict student
+                  success from content interaction, peer activity, and demographics.
+                </p>
+                <a
+                  class="project-github"
+                  href="https://github.com/yaminijoshi149/Student-Performance-Prediction-using-Machine-Learning"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Open Student Performance Prediction GitHub repository in a new tab"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.866-.013-1.699-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.071 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.349-1.088.635-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.269 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.55 9.55 0 0 1 2.504.337c1.909-1.295 2.748-1.026 2.748-1.026.546 1.378.203 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.31.678.921.678 1.857 0 1.34-.013 2.42-.013 2.75 0 .269.18.58.688.481A10.02 10.02 0 0 0 22 12.017C22 6.484 17.523 2 12 2Z"
+                    />
+                  </svg>
+                  <span class="sr-only">Student Performance Prediction GitHub</span>
+                </a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-image-wrapper">
+                <img
+                  class="project-image"
+                  src="assets/img/projects/covid.png"
+                  alt="Vocal Based Covid-19 Detection project preview"
+                />
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Vocal Based Covid-19 Detection</h3>
+                <p class="project-description">
+                  Contactless detection of Covid-19 using machine learning models trained on
+                  cough samples of individuals.
+                </p>
+                <a
+                  class="project-github"
+                  href="https://github.com/yaminijoshi149/Contactless_Covid19_Detection"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Open Vocal Based Covid-19 Detection GitHub repository in a new tab"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.866-.013-1.699-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.071 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.349-1.088.635-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.269 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.55 9.55 0 0 1 2.504.337c1.909-1.295 2.748-1.026 2.748-1.026.546 1.378.203 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.31.678.921.678 1.857 0 1.34-.013 2.42-.013 2.75 0 .269.18.58.688.481A10.02 10.02 0 0 0 22 12.017C22 6.484 17.523 2 12 2Z"
+                    />
+                  </svg>
+                  <span class="sr-only">Vocal Based Covid-19 Detection GitHub</span>
+                </a>
               </div>
             </article>
           </div>
-        </div>
-      </section>
-
-      <!-- 6. education -->
-      <section id="education" class="section">
-        <div class="container">
-          <h2>Education</h2>
-          <!-- TODO: Replace with your school, degree, and dates -->
-          <p><strong>B.S. in Computer Science</strong></p>
-          <p>University Name | Expected Graduation: Month Year</p>
         </div>
       </section>
 
