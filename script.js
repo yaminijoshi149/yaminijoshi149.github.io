@@ -5,6 +5,8 @@ const year = document.querySelector("#year");
 const contactForm = document.querySelector("#contact-form");
 const formStatus = document.querySelector("#form-status");
 const skillsShowcase = document.querySelector("#skills-showcase");
+const timeline = document.querySelector("#timeline");
+const timelineItems = document.querySelector("#timeline-items");
 
 const customSkillIcons = {
   AWS: {
@@ -103,6 +105,71 @@ const skillsData = [
   },
 ];
 
+const timelineData = [
+  {
+    institution: "KLE Technological University",
+    role: "Bachelor of Engineering in Computer Science",
+    start: "2018-08",
+    end: "2022-05",
+    type: "education",
+    icon: "assets/img/timeline/kle.png",
+    bullets: [
+      "Built a strong foundation in computer science fundamentals.",
+      "Completed software development, data structures, and project-based coursework.",
+    ],
+  },
+  {
+    institution: "Indian Institute of Science (IISc)",
+    role: "AI/ML Research",
+    start: "2022-01",
+    end: "2022-12",
+    type: "research",
+    icon: "assets/img/timeline/iisc.png",
+    bullets: [
+      "Contributed to AI/ML research exploration and experimentation.",
+      "Worked on model evaluation and research-oriented problem solving.",
+    ],
+  },
+  {
+    institution: "Deloitte",
+    role: "AI / Data Engineer",
+    start: "2023-01",
+    end: "2023-12",
+    type: "work",
+    icon: "assets/img/timeline/deloitte.png",
+    bullets: [
+      "Developed data engineering workflows for analytics and AI use cases.",
+      "Supported scalable data processing and validation pipelines.",
+      "Collaborated with cross-functional technology teams.",
+    ],
+  },
+  {
+    institution: "University of Southern California",
+    role: "Master of Science in Computer Science",
+    start: "2024-01",
+    end: "2025-12",
+    type: "education",
+    icon: "assets/img/timeline/usc.png",
+    bullets: [
+      "Completed graduate coursework in computer science, AI, and data systems.",
+      "Built academic and applied software engineering projects.",
+    ],
+  },
+  {
+    institution: "Kintsugi Global",
+    role: "AI Engineer",
+    start: "2026-01",
+    end: "Present",
+    type: "work",
+    icon: "assets/img/timeline/kintsugi.png",
+    bullets: [
+      "Building AI-powered systems and product features.",
+      "Supporting model integration, testing, and deployment workflows.",
+      "Collaborating across engineering and product teams.",
+    ],
+  },
+];
+
 if (year) {
   year.textContent = String(new Date().getFullYear());
 }
@@ -179,6 +246,246 @@ if (skillsShowcase) {
       `
     )
     .join("");
+}
+
+function parseTimelineMonth(value) {
+  if (value === "Present") {
+    const now = new Date();
+    return new Date(now.getFullYear(), now.getMonth(), 1);
+  }
+
+  const [yearValue, monthValue] = value.split("-").map(Number);
+  return new Date(yearValue, monthValue - 1, 1);
+}
+
+function getTimelineFallback(item) {
+  if (item.institution.includes("University of Southern California")) {
+    return "USC";
+  }
+
+  if (item.institution.includes("Indian Institute of Science")) {
+    return "IISc";
+  }
+
+  const fallback = item.institution
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((word) => word[0])
+    .join("")
+    .toUpperCase();
+
+  return fallback;
+}
+
+let renderedTimelineData = [];
+
+function renderTimeline() {
+  if (!timeline || !timelineItems || !timelineData.length) {
+    return;
+  }
+
+  timelineItems.innerHTML = "";
+  const detailPanel = document.createElement("aside");
+  renderedTimelineData = [...timelineData].sort(
+    (firstItem, secondItem) => parseTimelineMonth(secondItem.start) - parseTimelineMonth(firstItem.start)
+  );
+
+  detailPanel.className = "timeline-detail-panel";
+  detailPanel.id = "timeline-detail-panel";
+  detailPanel.setAttribute("aria-live", "polite");
+  detailPanel.setAttribute("hidden", "");
+  timelineItems.appendChild(detailPanel);
+
+  renderedTimelineData.forEach((item, index) => {
+    const side = index % 2 === 0 ? "left" : "right";
+    const timelineItem = document.createElement("article");
+    const connector = document.createElement("div");
+    const card = document.createElement("button");
+    const icon = document.createElement("span");
+    const iconImage = document.createElement("img");
+    const cardCopy = document.createElement("div");
+    const frontTitle = document.createElement("h3");
+    const frontRole = document.createElement("p");
+
+    timelineItem.className = `timeline-item timeline-item-${side}`;
+    timelineItem.dataset.type = item.type;
+    timelineItem.dataset.timelineIndex = String(index);
+
+    connector.className = "timeline-connector";
+    connector.setAttribute("aria-hidden", "true");
+
+    card.className = "timeline-card";
+    card.type = "button";
+    card.setAttribute("aria-expanded", "false");
+    card.setAttribute("aria-controls", "timeline-detail-panel");
+    card.setAttribute("aria-label", `Open details for ${item.institution}`);
+    card.dataset.timelineCard = "";
+    card.dataset.timelineIndex = String(index);
+
+    icon.className = "timeline-icon";
+    icon.setAttribute("aria-hidden", "true");
+    icon.dataset.fallback = getTimelineFallback(item);
+
+    iconImage.src = item.icon;
+    iconImage.alt = "";
+    iconImage.loading = "lazy";
+    iconImage.decoding = "async";
+    iconImage.addEventListener("error", () => {
+      icon.textContent = icon.dataset.fallback || "";
+      iconImage.remove();
+    });
+
+    cardCopy.className = "timeline-card-copy";
+    frontTitle.textContent = item.institution;
+    frontRole.textContent = item.role;
+
+    icon.appendChild(iconImage);
+    cardCopy.appendChild(frontTitle);
+    cardCopy.appendChild(frontRole);
+    card.appendChild(icon);
+    card.appendChild(cardCopy);
+    timelineItem.appendChild(connector);
+    timelineItem.appendChild(card);
+    timelineItems.appendChild(timelineItem);
+  });
+}
+
+renderTimeline();
+
+if (timeline) {
+  let activeTimelineIndex = null;
+  let timelineCloseTimer = null;
+
+  function getTimelineCards() {
+    return Array.from(timeline.querySelectorAll("[data-timeline-card]"));
+  }
+
+  function closeTimelineDetail() {
+    const detailPanel = timeline.querySelector("#timeline-detail-panel");
+
+    activeTimelineIndex = null;
+    getTimelineCards().forEach((card) => {
+      card.classList.remove("is-active");
+      card.setAttribute("aria-expanded", "false");
+    });
+
+    if (!detailPanel) {
+      return;
+    }
+
+    detailPanel.classList.remove("is-open", "is-left", "is-right");
+    window.clearTimeout(timelineCloseTimer);
+    timelineCloseTimer = window.setTimeout(() => {
+      detailPanel.setAttribute("hidden", "");
+      detailPanel.replaceChildren();
+    }, 200);
+  }
+
+  function openTimelineDetail(card) {
+    const detailPanel = timeline.querySelector("#timeline-detail-panel");
+    const timelineIndex = Number(card.dataset.timelineIndex);
+    const item = renderedTimelineData[timelineIndex];
+    const timelineItem = card.closest(".timeline-item");
+
+    if (!detailPanel || !timelineItem || !item) {
+      return;
+    }
+
+    window.clearTimeout(timelineCloseTimer);
+
+    if (activeTimelineIndex === timelineIndex) {
+      closeTimelineDetail();
+      return;
+    }
+
+    const panelTitleId = `timeline-detail-title-${timelineIndex}`;
+    const panelRoleId = `timeline-detail-role-${timelineIndex}`;
+    const closeButton = document.createElement("button");
+    const title = document.createElement("h3");
+    const role = document.createElement("p");
+    const bulletList = document.createElement("ul");
+
+    activeTimelineIndex = timelineIndex;
+    getTimelineCards().forEach((timelineCard) => {
+      const isActive = timelineCard === card;
+      timelineCard.classList.toggle("is-active", isActive);
+      timelineCard.setAttribute("aria-expanded", String(isActive));
+    });
+
+    closeButton.className = "timeline-detail-close";
+    closeButton.type = "button";
+    closeButton.setAttribute("aria-label", "Close timeline details");
+    closeButton.textContent = "\u00d7";
+
+    title.id = panelTitleId;
+    title.textContent = item.institution;
+
+    role.id = panelRoleId;
+    role.textContent = item.role;
+
+    item.bullets.forEach((bullet) => {
+      const bulletItem = document.createElement("li");
+      bulletItem.textContent = bullet;
+      bulletList.appendChild(bulletItem);
+    });
+
+    detailPanel.replaceChildren(closeButton, title, role, bulletList);
+    detailPanel.setAttribute("role", "dialog");
+    detailPanel.setAttribute("aria-labelledby", panelTitleId);
+    detailPanel.setAttribute("aria-describedby", panelRoleId);
+    detailPanel.style.top = `${Math.max(0, timelineItem.offsetTop - 8)}px`;
+    detailPanel.classList.toggle("is-left", timelineItem.classList.contains("timeline-item-left"));
+    detailPanel.classList.toggle("is-right", timelineItem.classList.contains("timeline-item-right"));
+    detailPanel.removeAttribute("hidden");
+
+    window.requestAnimationFrame(() => {
+      detailPanel.classList.add("is-open");
+    });
+  }
+
+  timeline.addEventListener("click", (event) => {
+    const target = event.target;
+
+    if (!(target instanceof Element)) {
+      return;
+    }
+
+    if (target.closest(".timeline-detail-close")) {
+      closeTimelineDetail();
+      return;
+    }
+
+    const card = target.closest("[data-timeline-card]");
+
+    if (!card) {
+      return;
+    }
+
+    openTimelineDetail(card);
+  });
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+
+    if (!(target instanceof Element)) {
+      return;
+    }
+
+    if (target.closest("#timeline")) {
+      return;
+    }
+
+    closeTimelineDetail();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") {
+      return;
+    }
+
+    closeTimelineDetail();
+  });
 }
 
 function setFormStatus(message, type) {
