@@ -631,6 +631,7 @@ h1 {
 
 .timeline-track {
   position: relative;
+  min-height: clamp(760px, 145vh, 1050px);
   padding: 0.4rem 0 0.8rem;
 }
 
@@ -654,8 +655,11 @@ h1 {
 .timeline-items {
   position: relative;
   z-index: 1;
-  display: grid;
-  gap: 2.25rem;
+  min-height: clamp(760px, 145vh, 1050px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
 }
 
 .timeline-item {
@@ -1289,6 +1293,15 @@ h1 {
 
   .timeline {
     margin-top: 0.8rem;
+  }
+
+  .timeline-track,
+  .timeline-items {
+    min-height: auto;
+  }
+
+  .timeline-items {
+    gap: 1.55rem;
   }
 
   .timeline-line {

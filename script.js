@@ -107,40 +107,17 @@ const skillsData = [
 
 const timelineData = [
   {
-    institution: "KLE Technological University",
-    role: "Bachelor of Engineering in Computer Science",
-    start: "2018-08",
-    end: "2022-05",
-    type: "education",
-    icon: "assets/img/timeline/kle.png",
-    bullets: [
-      "Built a strong foundation in computer science fundamentals.",
-      "Completed software development, data structures, and project-based coursework.",
-    ],
-  },
-  {
-    institution: "Indian Institute of Science (IISc)",
-    role: "AI/ML Research",
-    start: "2022-01",
-    end: "2022-12",
-    type: "research",
-    icon: "assets/img/timeline/iisc.png",
-    bullets: [
-      "Contributed to AI/ML research exploration and experimentation.",
-      "Worked on model evaluation and research-oriented problem solving.",
-    ],
-  },
-  {
-    institution: "Deloitte",
-    role: "AI / Data Engineer",
-    start: "2023-01",
-    end: "2023-12",
+    institution: "Kintsugi Global",
+    role: "AI Engineer",
+    start: "2026-01",
+    end: "Present",
     type: "work",
-    icon: "assets/img/timeline/deloitte.png",
+    side: "left",
+    icon: "assets/img/timeline/kintsugi.png",
     bullets: [
-      "Developed data engineering workflows for analytics and AI use cases.",
-      "Supported scalable data processing and validation pipelines.",
-      "Collaborated with cross-functional technology teams.",
+      "Built and integrated full-stack product features using Next.js, React, TypeScript, Node.js, and MongoDB, enabling scalable user-facing workflows across frontend, backend, and database layers.",
+      "Implemented retrieval-augmented generation pipelines using LangChain, Pinecone, Hugging Face embeddings, and MongoDB.",
+      "Productionized AI-backed services on AWS (EC2, S3) with Jenkins CI/CD, while adding unit and integration tests to improve deployment reliability, system performance, and overall product stability.",
     ],
   },
   {
@@ -149,23 +126,48 @@ const timelineData = [
     start: "2024-01",
     end: "2025-12",
     type: "education",
+    side: "right",
     icon: "assets/img/timeline/usc.png",
     bullets: [
-      "Completed graduate coursework in computer science, AI, and data systems.",
-      "Built academic and applied software engineering projects.",
+      "Coursework included Analysis of Algorithms, Database Management Systems, Web Technologies, Deep Learning, Information Retrieval, Research Methods and Statistical Analysis, and Natural Language Processing.",
     ],
   },
   {
-    institution: "Kintsugi Global",
-    role: "AI Engineer",
-    start: "2026-01",
-    end: "Present",
+    institution: "Deloitte",
+    role: "AI / Data Engineer",
+    start: "2023-01",
+    end: "2023-12",
     type: "work",
-    icon: "assets/img/timeline/kintsugi.png",
+    side: "left",
+    icon: "assets/img/timeline/deloitte.png",
     bullets: [
-      "Building AI-powered systems and product features.",
-      "Supporting model integration, testing, and deployment workflows.",
-      "Collaborating across engineering and product teams.",
+      "Ingested and integrated multi-source payer datasets through Control-M orchestrated ETL; applied schema/row-count/null/dup validations across Kafka, Hadoop/Hive, PySpark, SQL, and PL/SQL, loading analytics-ready tables for reporting daily refreshes.",
+      "Documented validation rules, runbooks, and refresh processes; partnered with analysts/stakeholders to translate requirements into data quality gates and reporting-ready datasets.",
+      "Automated Snowflake SQL-to-Oracle SQL conversion using Python/Flask, REST API (regex parsing, schema mapping, JSON serialization), improving SQL portability across databases.",
+    ],
+  },
+  {
+    institution: "Indian Institute of Science (IISc)",
+    role: "AI/ML Research",
+    start: "2022-01",
+    end: "2022-12",
+    type: "research",
+    side: "left",
+    icon: "assets/img/timeline/iisc.png",
+    bullets: [
+      "Built an end-to-end computer-vision workflow for 627 fundus images (preprocessing, augmentation, class-imbalance handling, dataset versioning), trained and validated robust multi-class classifier achieving 95.3% accuracy, applying rigorous testing and debugging for model validation.",
+    ],
+  },
+  {
+    institution: "KLE Technological University",
+    role: "Bachelor of Engineering in Computer Science",
+    start: "2018-08",
+    end: "2022-05",
+    type: "education",
+    side: "right",
+    icon: "assets/img/timeline/kle.png",
+    bullets: [
+      "Coursework included Data Structures and Algorithms, Object Oriented Programming, Software Engineering, Data Mining and Analysis, Machine Learning, Big Data Analysis, Distributed and Cloud Computing, Operating Systems, Computer Networks, and Social Networks Analysis.",
     ],
   },
 ];
@@ -298,7 +300,7 @@ function renderTimeline() {
   timelineItems.appendChild(detailPanel);
 
   renderedTimelineData.forEach((item, index) => {
-    const side = index % 2 === 0 ? "left" : "right";
+    const side = item.side || (item.type === "education" ? "right" : "left");
     const timelineItem = document.createElement("article");
     const connector = document.createElement("div");
     const card = document.createElement("button");
