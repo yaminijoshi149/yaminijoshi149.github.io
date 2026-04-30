@@ -358,15 +358,47 @@ renderTimeline();
 if (timeline) {
   let activeTimelineIndex = null;
   let timelineCloseTimer = null;
+  let timelineHideTimer = null;
+  let hoveredTimelineCard = null;
+  let isTimelineDetailHovered = false;
+  const timelineHoverCloseDelay = 140;
+  const supportsTimelineHover =
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   function getTimelineCards() {
     return Array.from(timeline.querySelectorAll("[data-timeline-card]"));
   }
 
+  function clearTimelineCloseTimer() {
+    window.clearTimeout(timelineCloseTimer);
+    timelineCloseTimer = null;
+  }
+
+  function clearTimelineHideTimer() {
+    window.clearTimeout(timelineHideTimer);
+    timelineHideTimer = null;
+  }
+
+  function scheduleTimelineClose() {
+    if (!supportsTimelineHover || hoveredTimelineCard || isTimelineDetailHovered) {
+      return;
+    }
+
+    clearTimelineCloseTimer();
+    timelineCloseTimer = window.setTimeout(() => {
+      closeTimelineDetail();
+    }, timelineHoverCloseDelay);
+  }
+
   function closeTimelineDetail() {
     const detailPanel = timeline.querySelector("#timeline-detail-panel");
 
+    clearTimelineCloseTimer();
+    clearTimelineHideTimer();
     activeTimelineIndex = null;
+    hoveredTimelineCard = null;
+    isTimelineDetailHovered = false;
     getTimelineCards().forEach((card) => {
       card.classList.remove("is-active");
       card.setAttribute("aria-expanded", "false");
@@ -377,10 +409,10 @@ if (timeline) {
     }
 
     detailPanel.classList.remove("is-open", "is-left", "is-right");
-    window.clearTimeout(timelineCloseTimer);
-    timelineCloseTimer = window.setTimeout(() => {
+    timelineHideTimer = window.setTimeout(() => {
       detailPanel.setAttribute("hidden", "");
       detailPanel.replaceChildren();
+      timelineHideTimer = null;
     }, 200);
   }
 
@@ -394,12 +426,8 @@ if (timeline) {
       return;
     }
 
-    window.clearTimeout(timelineCloseTimer);
-
-    if (activeTimelineIndex === timelineIndex) {
-      closeTimelineDetail();
-      return;
-    }
+    clearTimelineCloseTimer();
+    clearTimelineHideTimer();
 
     const panelTitleId = `timeline-detail-title-${timelineIndex}`;
     const panelRoleId = `timeline-detail-role-${timelineIndex}`;
@@ -444,6 +472,37 @@ if (timeline) {
     window.requestAnimationFrame(() => {
       detailPanel.classList.add("is-open");
     });
+  }
+
+  if (supportsTimelineHover) {
+    getTimelineCards().forEach((card) => {
+      card.addEventListener("mouseenter", () => {
+        hoveredTimelineCard = card;
+        openTimelineDetail(card);
+      });
+
+      card.addEventListener("mouseleave", () => {
+        if (hoveredTimelineCard === card) {
+          hoveredTimelineCard = null;
+        }
+
+        scheduleTimelineClose();
+      });
+    });
+
+    const detailPanel = timeline.querySelector("#timeline-detail-panel");
+
+    if (detailPanel) {
+      detailPanel.addEventListener("mouseenter", () => {
+        isTimelineDetailHovered = true;
+        clearTimelineCloseTimer();
+      });
+
+      detailPanel.addEventListener("mouseleave", () => {
+        isTimelineDetailHovered = false;
+        scheduleTimelineClose();
+      });
+    }
   }
 
   timeline.addEventListener("click", (event) => {

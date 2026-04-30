@@ -620,19 +620,23 @@ h1 {
 }
 
 /* 6. Experience & Education */
+.journey-section {
+  padding-top: 3.3rem;
+}
+
 .journey-section h2 {
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.55rem;
 }
 
 .timeline {
   position: relative;
-  margin-top: 1.1rem;
+  margin-top: 0.9rem;
 }
 
 .timeline-track {
   position: relative;
-  min-height: clamp(760px, 145vh, 1050px);
-  padding: 0.4rem 0 0.8rem;
+  min-height: clamp(620px, 88vh, 780px);
+  padding: 0.15rem 0 0.45rem;
 }
 
 .timeline-line {
@@ -655,11 +659,11 @@ h1 {
 .timeline-items {
   position: relative;
   z-index: 1;
-  min-height: clamp(760px, 145vh, 1050px);
+  min-height: clamp(620px, 88vh, 780px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .timeline-item {
@@ -1199,6 +1203,15 @@ h1 {
 
   .timeline-item {
     grid-template-columns: minmax(0, 1fr) 3.5rem minmax(0, 1fr);
+  }
+
+  .timeline-track {
+    min-height: clamp(600px, 90vh, 720px);
+  }
+
+  .timeline-items {
+    min-height: clamp(600px, 90vh, 720px);
+    gap: 0.9rem;
   }
 
   .timeline-connector {
