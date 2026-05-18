@@ -202,7 +202,8 @@ a {
 }
 
 .hero-copy {
-  padding-top: 2rem;
+  padding-top: 1rem;
+  margin-left: 2.25rem;
   color: var(--text-dark);
   text-align: left;
   align-items: flex-start;
@@ -1357,6 +1358,7 @@ h1 {
 
   .hero-copy {
     padding-top: 2rem;
+    margin-left: 0;
   }
 
   .hero-image-wrap {
@@ -1513,6 +1515,7 @@ h1 {
 
   .hero-copy {
     padding-top: 1.95rem;
+    margin-left: 0;
   }
 
   .lead {
