@@ -7,6 +7,8 @@ const formStatus = document.querySelector("#form-status");
 const skillsShowcase = document.querySelector("#skills-showcase");
 const timeline = document.querySelector("#timeline");
 const timelineItems = document.querySelector("#timeline-items");
+const moreAboutMeTabs = document.querySelector("#more-about-me-tabs");
+const moreAboutMePanel = document.querySelector("#more-about-me-panel");
 
 const customSkillIcons = {
   AWS: {
@@ -171,6 +173,117 @@ const timelineData = [
     ],
   },
 ];
+
+const moreAboutMeData = {
+  toastmasters: {
+    tabLabel: "Toastmasters",
+    title: "Toastmasters",
+    paragraphs: [
+      "I’ve been a Toastmaster for the past five years, and through Toastmasters, I’ve had the opportunity to blend leadership, communication, and public relations in meaningful ways.",
+    ],
+    bullets: [
+      "Managed the club’s Instagram, website, and newsletter, growing the Instagram community by nearly 800 followers while leading the club’s digital communications.",
+      "Planned and orchestrated Walk of Fame, the event celebrating the 20th anniversary of Daffodils Toastmasters Club, for 300+ attendees, and emceed events with 600+ guests, supporting high-quality audience experiences at scale.",
+      "Conducted Speechcraft, a 7-week crash course in communication and leadership for 40 students aged 15–16, with weekly guest speakers, structured assignments, and regular progress assessments.",
+    ],
+    links: [
+      {
+        label: "Instagram",
+        href: "https://www.instagram.com/daffodilstmc?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+      },
+      { label: "Website", href: "https://www.daffodilstmc.com/" },
+      {
+        label: "Newsletter",
+        href: "https://www.daffodilstmc.com/_files/ugd/53488a_60bf0f98418e479fa5617f575de35d20.pdf",
+      },
+      {
+        label: "Speechcraft",
+        href: "https://www.instagram.com/p/Cw1lEGnP2j4/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      },
+      {
+        label: "Walk of Fame",
+        href: "https://www.instagram.com/reel/CuUxa1tx8iS/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      },
+    ],
+    image: {
+      src: "assets/img/extra/tmi.jpeg",
+      alt: "Toastmasters",
+      fallback: "Toastmasters image",
+    },
+  },
+  cooking: {
+    tabLabel: "Cooking & Baking",
+    title: "Cooking & Baking",
+    paragraphs: [
+      "I enjoy cooking and baking, especially experimenting with vegetarian and vegan recipes, and one of my favorite signature bakes is a ras malai cake inspired by Indian dessert flavors.",
+    ],
+    bullets: [],
+    links: [{ label: "Instagram Food Page", href: "https://www.instagram.com/minis.kitchen14/" }],
+    image: {
+      src: "assets/img/extra/cake1.jpeg",
+      alt: "Cooking & Baking",
+      fallback: "Cooking & Baking image",
+    },
+  },
+  reading: {
+    tabLabel: "Reading",
+    title: "Reading",
+    paragraphs: [
+      "I love reading, it is one of my favorite ways to unwind, and I’m usually drawn to fiction, sci-fi, mythology, rom-coms, and classics.",
+    ],
+    bullets: [],
+    links: [
+      {
+        label: "Goodreads Profile",
+        href: "https://www.goodreads.com/user/show/200729139-yamini-joshi",
+      },
+    ],
+    image: {
+      src: "assets/img/extra/read.jpeg",
+      alt: "Reading",
+      fallback: "Reading image",
+    },
+  },
+};
+
+const moreAboutMeOrder = ["toastmasters", "cooking", "reading"];
+const moreAboutMeDefaultTab = "toastmasters";
+
+moreAboutMeData.toastmasters = {
+  tabLabel: "Toastmasters",
+  title: "Toastmasters",
+  paragraphs: [
+    "I've been a Toastmaster for the past five years, and through Toastmasters, I've had the opportunity to blend leadership, communication, and public relations in meaningful ways.",
+  ],
+  bullets: [
+    {
+      html: "Managed the club's <a class=\"more-about-inline-link\" href=\"https://www.instagram.com/daffodilstmc?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==\" target=\"_blank\" rel=\"noreferrer\" title=\"Redirect to Instagram page\">Instagram</a>, <a class=\"more-about-inline-link\" href=\"https://www.daffodilstmc.com/\" target=\"_blank\" rel=\"noreferrer\" title=\"Redirect to website\">website</a>, and <a class=\"more-about-inline-link\" href=\"https://www.daffodilstmc.com/_files/ugd/53488a_60bf0f98418e479fa5617f575de35d20.pdf\" target=\"_blank\" rel=\"noreferrer\" title=\"Redirect to newsletter\">newsletter</a>, growing the Instagram community by nearly 800 followers while leading the club's digital communications.",
+    },
+    {
+      html: "Planned and orchestrated <a class=\"more-about-inline-link\" href=\"https://www.instagram.com/reel/CuUxa1tx8iS/?utm_source=ig_web_copy_link&amp;igsh=MzRlODBiNWFlZA==\" target=\"_blank\" rel=\"noreferrer\" title=\"Redirect to Walk of Fame page\">Walk of Fame</a>, the event celebrating the 20th anniversary of Daffodils Toastmasters Club, for 300+ attendees, and emceed events with 600+ guests, supporting high-quality audience experiences at scale.",
+    },
+    {
+      html: "Conducted <a class=\"more-about-inline-link\" href=\"https://www.instagram.com/p/Cw1lEGnP2j4/?utm_source=ig_web_copy_link&amp;igsh=MzRlODBiNWFlZA==\" target=\"_blank\" rel=\"noreferrer\" title=\"Redirect to Speechcraft page\">Speechcraft</a>, a 7-week crash course in communication and leadership for 40 students aged 15-16, with weekly guest speakers, structured assignments, and regular progress assessments.",
+    },
+  ],
+  links: [
+    {
+      label: "Visit Daffodils Toastmasters Club",
+      href: "https://www.daffodilstmc.com/",
+    },
+  ],
+  image: {
+    src: "assets/img/extra/tmi.jpeg",
+    alt: "Toastmasters",
+    fallback: "Toastmasters image",
+  },
+};
+
+moreAboutMeData.cooking.image.src = "assets/img/extra/cake1.jpeg";
+moreAboutMeData.reading.paragraphs = [
+  "I love reading, it is one of my favorite ways to unwind, and I'm usually drawn to fiction, sci-fi, mythology, rom-coms, and classics.",
+];
+moreAboutMeData.reading.image.src = "assets/img/extra/read.jpeg";
 
 if (year) {
   year.textContent = String(new Date().getFullYear());
@@ -354,6 +467,174 @@ function renderTimeline() {
 }
 
 renderTimeline();
+
+if (moreAboutMeTabs && moreAboutMePanel) {
+  let activeMoreAboutMeTab = moreAboutMeDefaultTab;
+
+  function getMoreAboutMeTabButtons() {
+    return Array.from(moreAboutMeTabs.querySelectorAll('[role="tab"]'));
+  }
+
+  function renderMoreAboutMePanel(tabKey) {
+    const tabContent = moreAboutMeData[tabKey];
+
+    if (!tabContent) {
+      return;
+    }
+
+    const panelArticle = document.createElement("article");
+    const copyColumn = document.createElement("div");
+    const title = document.createElement("h3");
+    const actions = document.createElement("div");
+    const media = document.createElement("figure");
+    const image = document.createElement("img");
+    const imageFallback = document.createElement("div");
+    const imageFallbackLabel = document.createElement("span");
+
+    panelArticle.className = "more-about-panel-inner";
+
+    copyColumn.className = "more-about-copy";
+
+    title.textContent = tabContent.title;
+
+    copyColumn.appendChild(title);
+
+    tabContent.paragraphs.forEach((paragraphText) => {
+      const paragraph = document.createElement("p");
+      paragraph.textContent = paragraphText;
+      copyColumn.appendChild(paragraph);
+    });
+
+    if (tabContent.bullets.length) {
+      const bulletList = document.createElement("ul");
+      bulletList.className = "more-about-points";
+
+      tabContent.bullets.forEach((bulletText) => {
+        const bulletItem = document.createElement("li");
+
+        if (bulletText && typeof bulletText === "object" && "html" in bulletText) {
+          bulletItem.innerHTML = bulletText.html;
+        } else {
+          bulletItem.textContent = bulletText;
+        }
+
+        bulletList.appendChild(bulletItem);
+      });
+
+      copyColumn.appendChild(bulletList);
+    }
+
+    actions.className = "more-about-actions";
+
+    tabContent.links.forEach((linkData, index) => {
+      const link = document.createElement("a");
+      link.className = index === 0 ? "more-about-link" : "more-about-link more-about-link-secondary";
+      link.href = linkData.href;
+      link.textContent = linkData.label;
+      link.target = "_blank";
+      link.rel = "noreferrer";
+      actions.appendChild(link);
+    });
+
+    copyColumn.appendChild(actions);
+
+    media.className = "more-about-media";
+
+    image.className = "more-about-image";
+    image.src = tabContent.image.src;
+    image.alt = tabContent.image.alt;
+    image.loading = "lazy";
+    image.decoding = "async";
+    image.addEventListener("error", () => {
+      media.classList.add("is-fallback");
+      image.remove();
+    });
+
+    imageFallback.className = "more-about-media-fallback";
+    imageFallback.setAttribute("aria-hidden", "true");
+
+    imageFallbackLabel.textContent = tabContent.image.fallback;
+    imageFallback.appendChild(imageFallbackLabel);
+
+    media.append(image, imageFallback);
+    panelArticle.append(copyColumn, media);
+    moreAboutMePanel.replaceChildren(panelArticle);
+  }
+
+  function setActiveMoreAboutMeTab(tabKey) {
+    if (!moreAboutMeData[tabKey]) {
+      return;
+    }
+
+    activeMoreAboutMeTab = tabKey;
+    moreAboutMePanel.setAttribute("role", "tabpanel");
+    moreAboutMePanel.setAttribute("tabindex", "0");
+    moreAboutMePanel.setAttribute("aria-labelledby", `more-about-tab-${tabKey}`);
+    getMoreAboutMeTabButtons().forEach((button) => {
+      const isActive = button.dataset.aboutTab === tabKey;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-selected", String(isActive));
+      button.setAttribute("tabindex", isActive ? "0" : "-1");
+    });
+    renderMoreAboutMePanel(tabKey);
+  }
+
+  function renderMoreAboutMeTabs() {
+    moreAboutMeTabs.innerHTML = "";
+
+    moreAboutMeOrder.forEach((tabKey) => {
+      const tabContent = moreAboutMeData[tabKey];
+      const button = document.createElement("button");
+
+      button.type = "button";
+      button.className = "more-about-tab";
+      button.id = `more-about-tab-${tabKey}`;
+      button.dataset.aboutTab = tabKey;
+      button.setAttribute("role", "tab");
+      button.setAttribute("aria-controls", "more-about-me-panel");
+      button.setAttribute("aria-selected", "false");
+      button.setAttribute("tabindex", "-1");
+      button.textContent = tabContent.tabLabel;
+      button.addEventListener("click", () => {
+        setActiveMoreAboutMeTab(tabKey);
+      });
+
+      moreAboutMeTabs.appendChild(button);
+    });
+
+    setActiveMoreAboutMeTab(activeMoreAboutMeTab);
+  }
+
+  moreAboutMeTabs.addEventListener("keydown", (event) => {
+    const tabButtons = getMoreAboutMeTabButtons();
+    const currentIndex = tabButtons.findIndex((button) => button.dataset.aboutTab === activeMoreAboutMeTab);
+    let nextIndex = currentIndex;
+
+    if (event.key === "ArrowRight") {
+      nextIndex = (currentIndex + 1) % tabButtons.length;
+    } else if (event.key === "ArrowLeft") {
+      nextIndex = (currentIndex - 1 + tabButtons.length) % tabButtons.length;
+    } else if (event.key === "Home") {
+      nextIndex = 0;
+    } else if (event.key === "End") {
+      nextIndex = tabButtons.length - 1;
+    } else {
+      return;
+    }
+
+    event.preventDefault();
+    const nextButton = tabButtons[nextIndex];
+
+    if (!nextButton) {
+      return;
+    }
+
+    setActiveMoreAboutMeTab(nextButton.dataset.aboutTab);
+    nextButton.focus();
+  });
+
+  renderMoreAboutMeTabs();
+}
 
 if (timeline) {
   let activeTimelineIndex = null;
@@ -576,34 +857,84 @@ if (menuToggle && navLinks) {
   });
 }
 
-const sections = document.querySelectorAll("main section[id]");
+const sections = Array.from(document.querySelectorAll("main section[id]"));
 
-if (sections.length && navAnchors.length && "IntersectionObserver" in window) {
-  const sectionObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          return;
-        }
-        const id = entry.target.getAttribute("id");
-        navAnchors.forEach((anchor) => {
-          const isActive = anchor.getAttribute("href") === `#${id}`;
-          anchor.classList.toggle("is-active", isActive);
-          if (isActive) {
-            anchor.setAttribute("aria-current", "page");
-          } else {
-            anchor.removeAttribute("aria-current");
-          }
-        });
-      });
-    },
-    {
-      rootMargin: "-35% 0px -55% 0px",
-      threshold: 0.1,
+function setActiveNavSection(activeSectionId) {
+  navAnchors.forEach((anchor) => {
+    const isActive = anchor.getAttribute("href") === `#${activeSectionId}`;
+    anchor.classList.toggle("is-active", isActive);
+
+    if (isActive) {
+      anchor.setAttribute("aria-current", "page");
+    } else {
+      anchor.removeAttribute("aria-current");
     }
-  );
+  });
+}
 
-  sections.forEach((section) => sectionObserver.observe(section));
+function getMostRelevantSection() {
+  const targetY = window.innerHeight * 0.38;
+  let bestSection = null;
+  let bestDistance = Number.POSITIVE_INFINITY;
+
+  sections.forEach((section) => {
+    const rect = section.getBoundingClientRect();
+    const isVisible = rect.bottom > 0 && rect.top < window.innerHeight;
+
+    if (!isVisible) {
+      return;
+    }
+
+    const distance =
+      rect.top <= targetY && rect.bottom >= targetY
+        ? 0
+        : Math.min(Math.abs(rect.top - targetY), Math.abs(rect.bottom - targetY));
+
+    if (distance < bestDistance) {
+      bestDistance = distance;
+      bestSection = section;
+    }
+  });
+
+  return bestSection;
+}
+
+if (sections.length && navAnchors.length) {
+  let activeNavFrame = null;
+
+  function updateActiveNavFromViewport() {
+    const activeSection = getMostRelevantSection();
+
+    if (!activeSection) {
+      return;
+    }
+
+    setActiveNavSection(activeSection.id);
+  }
+
+  function scheduleActiveNavUpdate() {
+    if (activeNavFrame !== null) {
+      return;
+    }
+
+    activeNavFrame = window.requestAnimationFrame(() => {
+      activeNavFrame = null;
+      updateActiveNavFromViewport();
+    });
+  }
+
+  if ("IntersectionObserver" in window) {
+    const sectionObserver = new IntersectionObserver(scheduleActiveNavUpdate, {
+      rootMargin: "-25% 0px -55% 0px",
+      threshold: [0, 0.15, 0.35, 0.6],
+    });
+
+    sections.forEach((section) => sectionObserver.observe(section));
+  }
+
+  window.addEventListener("scroll", scheduleActiveNavUpdate, { passive: true });
+  window.addEventListener("resize", scheduleActiveNavUpdate);
+  scheduleActiveNavUpdate();
 }
 
 document.addEventListener("click", (event) => {

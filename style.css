@@ -885,7 +885,223 @@ h1 {
   background: rgba(255, 255, 255, 0.12);
 }
 
-/* 7. Contact */
+/* 7. More About Me */
+.more-about-section {
+  padding-top: 3.5rem;
+}
+
+.more-about-shell {
+  position: relative;
+}
+
+.more-about-header {
+  margin-bottom: 0.9rem;
+}
+
+.more-about-tabs-wrap {
+  margin-top: 0;
+}
+
+.more-about-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  padding: 0.45rem;
+  border: 1px solid rgba(184, 200, 224, 0.16);
+  border-radius: 22px;
+  background: rgba(10, 18, 36, 0.54);
+}
+
+.more-about-tab {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: #b8c4d8;
+  font: inherit;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  padding: 0.72rem 1rem;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.more-about-tab:hover,
+.more-about-tab:focus-visible {
+  color: #eef4ff;
+  border-color: rgba(214, 227, 247, 0.22);
+}
+
+.more-about-tab.is-active {
+  color: #11203d;
+  background: linear-gradient(135deg, #d6e3f7 0%, #b6c6df 100%);
+  border-color: rgba(214, 227, 247, 0.32);
+  box-shadow: 0 10px 24px rgba(4, 9, 24, 0.18);
+}
+
+.more-about-panel {
+  margin-top: 1.15rem;
+}
+
+.more-about-panel-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(240px, 28vw, 300px);
+  gap: clamp(1rem, 2.6vw, 1.6rem);
+  align-items: start;
+  padding: clamp(1.15rem, 2.6vw, 1.7rem);
+  border: 1px solid rgba(184, 200, 224, 0.18);
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(163, 182, 214, 0.08), rgba(163, 182, 214, 0.03)),
+    rgba(10, 18, 36, 0.8);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
+    0 18px 40px rgba(4, 9, 24, 0.2);
+}
+
+.more-about-copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.more-about-copy h3 {
+  margin-bottom: 0.7rem;
+  color: #eef4ff;
+  font-size: clamp(1.3rem, 2.4vw, 1.85rem);
+}
+
+.more-about-copy p {
+  margin-bottom: 0;
+  color: #ced8e8;
+  font-size: 0.97rem;
+  line-height: 1.72;
+}
+
+.more-about-copy p + p {
+  margin-top: 0.72rem;
+}
+
+.more-about-points {
+  margin: 1rem 0 0;
+  padding-left: 1.2rem;
+  color: #d6dfee;
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+.more-about-points li + li {
+  margin-top: 0.45rem;
+}
+
+.more-about-inline-link {
+  color: #eef4ff;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(214, 227, 247, 0.55);
+  text-underline-offset: 0.16em;
+  transition:
+    color 0.2s ease,
+    text-decoration-color 0.2s ease;
+}
+
+.more-about-inline-link:hover,
+.more-about-inline-link:focus-visible {
+  color: #ffffff;
+  text-decoration-color: rgba(214, 227, 247, 0.95);
+}
+
+.more-about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.more-about-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.9rem;
+  padding: 0.72rem 1.05rem;
+  border: 1px solid rgba(214, 227, 247, 0.2);
+  border-radius: 999px;
+  background: linear-gradient(130deg, rgba(214, 227, 247, 0.92), rgba(176, 194, 220, 0.92));
+  color: #12203d;
+  text-decoration: none;
+  font-weight: 700;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.more-about-link:hover,
+.more-about-link:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(4, 9, 24, 0.16);
+}
+
+.more-about-link-secondary {
+  background: rgba(13, 24, 47, 0.48);
+  color: #e5edf9;
+}
+
+.more-about-media {
+  position: relative;
+  width: clamp(240px, 28vw, 300px);
+  aspect-ratio: 4 / 5;
+  min-height: 0;
+  margin: 0;
+  justify-self: end;
+  align-self: start;
+  overflow: hidden;
+  border: 1px solid rgba(184, 200, 224, 0.18);
+  border-radius: 22px;
+  background:
+    linear-gradient(135deg, rgba(177, 193, 219, 0.08), rgba(22, 35, 66, 0.2)),
+    rgba(11, 20, 40, 0.92);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.more-about-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.more-about-media-fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1.2rem;
+  text-align: center;
+  color: #d7e2f4;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background:
+    linear-gradient(160deg, rgba(161, 179, 208, 0.1), rgba(24, 39, 71, 0.24)),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(255, 255, 255, 0.05) 0 16px,
+      transparent 16px 32px
+    );
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.more-about-media.is-fallback .more-about-media-fallback {
+  opacity: 1;
+}
+
+/* 8. Contact */
 #contact .container {
   background: #0f1a34;
   border: 1px solid rgba(184, 200, 224, 0.22);
@@ -1201,6 +1417,14 @@ h1 {
     gap: 1rem;
   }
 
+  .more-about-panel-inner {
+    grid-template-columns: minmax(0, 1fr) clamp(220px, 34vw, 270px);
+  }
+
+  .more-about-media {
+    width: clamp(220px, 34vw, 270px);
+  }
+
   .timeline-item {
     grid-template-columns: minmax(0, 1fr) 3.5rem minmax(0, 1fr);
   }
@@ -1304,6 +1528,40 @@ h1 {
     grid-template-columns: 1fr;
   }
 
+  .more-about-section {
+    padding-top: 3.25rem;
+  }
+
+  .more-about-shell {
+    padding: 0;
+  }
+
+  .more-about-tabs {
+    gap: 0.45rem;
+    padding: 0.38rem;
+  }
+
+  .more-about-tab {
+    flex: 1 1 180px;
+    text-align: center;
+    padding: 0.68rem 0.88rem;
+  }
+
+  .more-about-panel-inner {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    border-radius: 20px;
+  }
+
+  .more-about-copy h3 {
+    font-size: 1.4rem;
+  }
+
+  .more-about-media {
+    width: min(100%, 280px);
+    justify-self: center;
+  }
+
   .timeline {
     margin-top: 0.8rem;
   }
@@ -1397,6 +1655,26 @@ h1 {
 
   .contact-icon-link {
     padding: 0.7rem 0.8rem;
+  }
+
+  .more-about-tabs {
+    border-radius: 18px;
+  }
+
+  .more-about-tab {
+    flex-basis: 100%;
+  }
+
+  .more-about-actions {
+    flex-direction: column;
+  }
+
+  .more-about-link {
+    width: 100%;
+  }
+
+  .more-about-media {
+    width: min(100%, 250px);
   }
 
   .timeline-item,
